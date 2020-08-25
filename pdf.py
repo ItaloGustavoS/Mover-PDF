@@ -1,5 +1,5 @@
 import glob
 import shutil
 
-for f in glob.glob('/Users/johnle/Desktop/Exames.pdf'):
-    shutil.copy(f, '/Users/johnle/Desktop/PDF')
+for f in glob.glob(r'C:\Users\Italo\Downloads\Python'):
+    shutil.copy(f, r'C:\Users\Italo\Downloads\Python\a')
