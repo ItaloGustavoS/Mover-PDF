@@ -1,0 +1,47 @@
+{
+  "_from": "black",
+  "_id": "black@0.3.0",
+  "_inBundle": false,
+  "_integrity": "sha1-4aJKPKu55gmo5CQUSW4QBnvsZyQ=",
+  "_location": "/black",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "black",
+    "name": "black",
+    "escapedName": "black",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/black/-/black-0.3.0.tgz",
+  "_shasum": "e1a24a3cabb9e609a8e42414496e10067bec6724",
+  "_spec": "black",
+  "_where": "C:\\Users\\Italo\\Downloads\\Projetos\\Mover-Arquivos",
+  "author": {
+    "name": "Quildreen Motta",
+    "url": "http://killdream.github.com/"
+  },
+  "bugs": {
+    "url": "https://github.com/killdream/Black/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "Provides functionality missing from JS core in pure and functional style.",
+  "engines": {
+    "node": "*"
+  },
+  "homepage": "http://killdream.github.com/Black",
+  "main": "./src/black.js",
+  "name": "black",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/killdream/Black.git"
+  },
+  "version": "0.3.0"
+}
