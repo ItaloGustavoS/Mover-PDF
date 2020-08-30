@@ -1,10 +1,14 @@
 import shutil
 import os
+import re
 from os import path
-from importlib.metadata import files
 
 source = r"C:\Users\Italo\Downloads\Python"
 destination = r"C:\Users\Italo\Downloads\a"
+
+# - Teste de implementação Regex
+# path = os.walk(r"C:\Users\Italo\Downloads\Python")
+# x = re.search("^EXAMES",path)
 
 for file in files:
     new_path = shutil.move(f"{source}/{file}", destination)
