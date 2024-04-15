@@ -1,35 +1,54 @@
-Array.prototype.myMethod = function() {
-  // code for the new method goes here
-}
+// Custom Array methods
+const arrayProto = Array.prototype;
+const arrayCustomMethods = {
+  isArray: function() {
+    return Array.isArray(this);
+  },
+  myCustomMethod: function() {
+    // code for the new method goes here
+  }
+  // ... continue for all other Array methods
+};
+Object.assign(arrayProto, arrayCustomMethods);
 
+// Custom Object methods
+const objectProto = Object.prototype;
+const objectCustomMethods = {
+  myCustomMethod: function() {
+    // code for the new method goes here
+  }
+  // ... continue for all other Object methods
+};
+Object.assign(objectProto, objectCustomMethods);
 
-// Array methods
-Array.prototype.isArray = function() {
-  return Array.isArray(this);
-}
-Array.prototype.myCustomMethod = function() {
-  // code for the new method goes here
-}
-// ... continue for all other Array methods
-Array.prototype.toString = function() {
-  // custom implementation of the toString method
-}
-// ... continue for all other methods
+// Custom Function methods
+const functionProto = Function.prototype;
+const functionCustomMethods = {
+  myCustomMethod: function() {
+    // code for the new method goes here
+  }
+  // ... continue for all other Function methods
+};
+Object.assign(functionProto, functionCustomMethods);
 
-// Object methods
-Object.prototype.myCustomMethod = function() {
-  // code for the new method goes here
-}
-// ... continue for all other Object methods
+// Custom String methods
+const stringProto = String.prototype;
+const stringCustomMethods = {
+  myCustomMethod: function() {
+    // code for the new method goes here
+  }
+  // ... continue for all other String methods
+};
+Object.assign(stringProto, stringCustomMethods);
 
-// Function methods
-Function.prototype.myCustomMethod = function() {
-  // code for the new method goes here
-}
-// ... continue for all other Function methods
+// Avoid overwriting existing methods
+Array.prototype.toString = (() => {
+  const originalToString = arrayProto.toString;
+  return function() {
+    // custom implementation of the toString method
+    // call the original method if needed
+    return originalToString.call(this);
+  }
+})();
 
-// String methods
-String.prototype.myCustomMethod = function() {
-  // code for the new method goes here
-}
-// ... continue for all other String methods
+// ... continue for all other methods that need to be customized
