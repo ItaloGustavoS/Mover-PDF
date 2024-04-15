@@ -6,7 +6,13 @@ function isProcessable() {
     // } else {
     //     return false;
     // }
-    return false;
+    // Example condition: checking if a number is greater than 10
+    if (num > 10) {
+        return true;
+    } else {
+        return false;
+    }
 }
 
-is_processable = isProcessable();
+const is_processable = isProcessable();
+console.log(is_processable);
