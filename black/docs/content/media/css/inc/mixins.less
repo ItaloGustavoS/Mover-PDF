@@ -1,106 +1,98 @@
-a img {
-    border: none;
+@mixin border-radius($rad) {
+  border-radius: $rad;
+  -webkit-border-radius: $rad;
+  -moz-border-radius: $rad;
 }
 
-.clear {
-    clear: both;
+@mixin border-radius-topleft($rad: 10px) {
+  border-top-left-radius: $rad;
+  -webkit-border-top-left-radius: $rad;
+  -moz-border-radius-topleft: $rad;
+}
+
+@mixin border-radius-topright($rad: 10px) {
+  border-top-right-radius: $rad;
+  -webkit-border-top-right-radius: $rad;
+  -moz-border-radius-topright: $rad;
+}
+
+@mixin border-radius-bottomleft($rad: 10px) {
+  border-bottom-left-radius: $rad;
+  -webkit-border-bottom-left-radius: $rad;
+  -moz-border-radius-bottomleft: $rad;
+}
+
+@mixin border-radius-bottomright($rad: 10px) {
+  border-bottom-right-radius: $rad;
+  -webkit-border-bottom-right-radius: $rad;
+  -moz-border-radius-bottomright: $rad;
+}
+
+@mixin box-shadow($bsLeft, $bsTop, $bsBlur, $bsColor) {
+  box-shadow: $bsLeft $bsTop $bsBlur $bsColor;
+  -moz-box-shadow: $bsLeft $bsTop $bsBlur $bsColor;
+  -webkit-box-shadow: $bsLeft $bsTop $bsBlur $bsColor;
+  -o-box-shadow: $bsLeft $bsTop $bsBlur $bsColor;
+}
+
+@mixin linear-gradient($from: #000, $to: #EEE) {
+  background: $from;
+  background-image: -webkit-gradient(linear, left top, left bottom, from($from), to($to));
+  background-image: -moz-linear-gradient(top, $from, $to);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='$from', endColorstr='$to');
+  -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='$from', EndColorStr='$to');
+}
+
+@mixin transition($range: all, $time: 1s, $ease: ease-in-out) {
+  transition: $range $time $ease;
+  -moz-transition: $range $time $ease;
+  -webkit-transition: $range $time $ease;
+  -o-transition: $range $time $ease;
+}
+
+@mixin transform($property, $value) {
+  -webkit-transform: $property($value);
+  -moz-transform: $property($value);
+  -o-transform: $property($value);
+  -ms-transform: $property($value);
+  transform: $property($value);
 }
 
 .clickable {
-    cursor: pointer;
-}    
-
-.nobullets{
-    list-style-type:none;
+  cursor: pointer;
 }
 
-.box-shadow($bsLeft, $bsTop, $bsBlur, $bsColor){
-    box-shadow: $bsLeft $bsTop $bsBlur $bsColor;
-    -moz-box-shadow: $bsLeft $bsTop $bsBlur $bsColor;
-    -webkit-box-shadow: $bsLeft $bsTop $bsBlur $bsColor;
-    -o-box-shadow: $bsLeft $bsTop $bsBlur $bsColor;
+.nobullets {
+  list-style-type: none;
 }
 
-.border-radius($rad){
-    border-radius: $rad;
-    -webkit-border-radius: $rad;
-    -moz-border-radius: $rad;
+.opacity($op: 100) {
+  filter: alpha(opacity=$op);
+  -moz-opacity: $op/100;
+  -khtml-opacity: $op/100;
+  opacity: $op/100;
 }
 
-.border-radius-topleft($rad:10px) {
-    border-top-left-radius: $rad;
-    -webkit-border-top-left-radius: $rad;
-    -moz-border-radius-topleft: $rad;
+.a-img {
+  border: none;
 }
 
-.border-radius-topright($rad:10px) {
-    border-top-right-radius: $rad;
-    -webkit-border-top-right-radius: $rad;
-    -moz-border-radius-topright: $rad;
+.clear {
+  clear: both;
 }
 
-.border-radius-bottomleft($rad:10px) {
-    border-bottom-left-radius: $rad;
-    -webkit-border-bottom-left-radius: $rad;
-    -moz-border-radius-bottomleft: $rad;
-}
-
-.border-radius-bottomright($rad:10px) {
-    border-bottom-right-radius: $rad;
-    -webkit-border-bottom-right-radius: $rad;
-    -moz-border-radius-bottomright: $rad;
-}
-
-.opacity($op:100) {
-    filter: alpha(opacity=$op);
-    -moz-opacity: $op/100;
-    -khtml-opacity: $op/100;
-    opacity: $op/100;
-}
-
-.linear-gradient($from:#000, $to:#EEE) {
-    background: $from;
-    background-image: -webkit-gradient(linear, left top, left bottom, from($from), to($to));
-    background-image: -moz-linear-gradient(top, $from, $to);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='$from', endColorstr='$to');
-    -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='$from', EndColorStr='$to');
-}
-
-.transition($range: all, $time: 1s, $ease: ease-in-out) {
-    transition: $range $time $ease;
-    -moz-transition: $range $time $ease;
-    -webkit-transition: $range $time $ease;
-    -o-transition: $range $time $ease;
-}
-
-.skew($angle_x:35, $angle_y:0) {
-    transform: skew($angle_x, $angle_y);
-    -webkit-transform: skew($angle_x, $angle_y);
-    -moz-transform: skew($angle_x, $angle_y);
-    -o-transform: skew($angle_x, $angle_y);
-    -ms-transform: skew($angle_x, $angle_y);
+.skew($angle_x: 35, $angle_y: 0) {
+  @include transform(skew, ($angle_x, $angle_y));
 }
 
 .scale($scale_x: 1) {
-    transform: scale($scale_x);
-    -webkit-transform: scale($scale_x);
-    -moz-transform: scale($scale_x);
-    -o-transform: scale($scale_x);
-    -ms-transform: scale($scale_x);
+  @include transform(scale, $scale_x);
 }
 
-.rotate($angle:35) {
-    transform: rotate($angle);
-    -webkit-transform: rotate($angle);
-    -moz-transform: rotate($angle);
-    -o-transform: rotate($angle);
-    -ms-transform: rotate($angle);
+.rotate($angle: 35) {
+  @include transform(rotate, $angle);
 }
 
 .translate($move_x: 10px, $move_y: 10px) {
-    transform: translate($move_x, $move_y);
-    -webkit-transform: translate($move_x, $move_y);
-    -moz-transform: translate($move_x, $move_y);
-    -o-transform: translate($move_x, $move_y);
-    -ms-transform: translate($move_x, $move_y);
+  @include transform(translate, ($move_x, $move_y));
 }
