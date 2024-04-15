@@ -1,3 +1,5 @@
+import os
+
 # File organization
 directory_structure = {
     "docs": {
@@ -7,3 +9,15 @@ directory_structure = {
         ".hgignore": {}
     }
 }
+
+def create_directory_structure(directory_dict):
+    for directory, subdirectories in directory_dict.items():
+        directory_path = os.path.join(os.getcwd(), directory)
+        if not os.path.exists(directory_path):
+            os.makedirs(directory_path)
+        for subdirectory, attributes in subdirectories.items():
+            subdirectory_path = os.path.join(directory_path, subdirectory)
+            if not os.path.exists(subdirectory_path):
+                os.makedirs(subdirectory_path)
+
+create_directory_structure(directory_structure)
