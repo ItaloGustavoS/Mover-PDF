@@ -1,28 +1,36 @@
 {% macro render_image(image_data) -%}
   {% with {
-    description: image_data.description,
-    base: image_data.base,
-    name: image_data.name,
-    extension: image_data.extension
+    description: image_data.description|default(''),
+    base: image_data.base|default('')|string,
+    name: image_data.name|default('')|string,
+    extension: image_data.extension|default('')
   } %}
-    <a
-      title="{{ description }}"
-      target="_hyde_basic"
-      href="{{ base ~ name ~ '/sizes/o' ~ extension }}"
-    >
-      <img
-        src="{{ base ~ name ~ '/sizes/s' ~ extension }}"
-        alt="{{ description }}"
+    {% if base and name %}
+      <a
+        title="{{ description }}"
+        target="_hyde_basic"
+        href="{{ base ~ '/sizes/o' ~ extension }}"
       >
-    </a>
+        <img
+          src="{{ base ~ '/sizes/s' ~ extension }}"
+          alt="{{ description }}"
+        >
+      </a>
+    {% else %}
+      <p>Error: invalid image data.</p>
+    {% endif %}
   {% endwith %}
 {%- endmacro %}
 
 {% macro render_ember(data) -%}
-  <figure>
-    {% for image in data.images %}
-      {{ render_image(image) }}
-    {% endfor %}
-    <figcaption>Hyde Basic Template - Screenshots</figcaption>
-  </figure>
+  {% if data.images %}
+    <figure>
+      {% for image in data.images %}
+        {{ render_image(image) }}
+      {% endfor %}
+      <figcaption>Hyde Basic Template - Screenshots</figcaption>
+    </figure>
+  {% else %}
+    <p>No images found.</p>
+  {% endif %}
 {%- endmacro %}
