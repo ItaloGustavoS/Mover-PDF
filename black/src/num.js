@@ -1,77 +1,84 @@
-/******************************************************************************
- *                                ~black.num~                                 *
- *                              ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾                               *
- * Numeric utilities.                                                         *
- *     _________________________________________________________________      *
- *        Copyright (c) 2011 Quildreen Motta // Licenced under MIT/X11        *
- ******************************************************************************/
-void function (root) {
+/**
+ * Numeric utilities.
+ *
+ * Copyright (c) 2011 Quildreen Motta // Licensed under MIT/X11
+ *
+ * Version: 1.0.0
+ * Name: black-num
+ * Doc: http://black-num.example.com
+ * Dependencies: none
+ * Tests: http://black-num.example.com/tests
+ * Main: black-num.js
+ *
+ */
 
-    var num
-      , floor = Math.floor
-      , round = Math.round
+const numericUtils = {
 
-    ///// Function clamp ///////////////////////////////////////////////////////
-    //
-    //   (num:Num, min:Num, max:Num) ↦ Num
-    //
-    // Returns the nearest number within the given boundaries.
-    //
-    function clamp(num, min, max) {
-        return num < min?  min
-        : num > max?  max
-        :             num
+  version: '1.0.0',
+  name: 'black-num',
+  doc: 'http://black-num.example.com',
+  dependencies: [],
+  tests: 'http://black-num.example.com/tests',
+  main: 'black-num.js',
+
+  ///// Function clamp ///////////////////////////////////////////////////////
+  //
+  //   (num:Num, min:Num = 0, max:Num = Number.MAX_SAFE_INTEGER) ↦ Num
+  //
+  // Returns the nearest number within the given boundaries.
+  //
+  clamp(num, min = 0, max = Number.MAX_SAFE_INTEGER) {
+    if (typeof num !== 'number') {
+      throw new Error('Invalid argument: num must be a number');
     }
-
-    ///// Function wrap ////////////////////////////////////////////////////////
-    //
-    //   (num:Num, min:Num, max:Num) ↦ Num
-    //
-    // Keeps a number within the given boundaries, but if the given
-    // number exceeds it, it wraps around.
-    //
-    function wrap(num, min, max) {
-        return num - floor((num - min) / (max - min)) * (max - min)
+    if (typeof min !== 'number') {
+      throw new Error('Invalid argument: min must be a number');
     }
-
-    ///// Function snap ////////////////////////////////////////////////////////
-    //
-    //   (num:Num, step:Num) ↦ Num
-    //
-    // Snaps the number to the nearest number in the arithmetic
-    // progression with the given step size.
-    //
-    function snap(num, step) {
-        return round(num / step) * step
+    if (typeof max !== 'number') {
+      throw new Error('Invalid argument: max must be a number');
     }
+    return num < min ? min : num > max ? max : num;
+  },
 
-    ///// Function pad /////////////////////////////////////////////////////////
-    //
-    //   (num:Num, size:Num) ↦ Str
-    //
-    // Prefixes a number with zeroes, such that it always has the given
-    // size.
-    //
-    function pad(num, size) { var result
-        result = String(num)
-        return result.length >= size?  result
-        :                        Array(size).join('0') + result
+  ///// Function wrap ////////////////////////////////////////////////////////
+  //
+  //   (num:Num, min:Num = 0, max:Num = Number.MAX_SAFE_INTEGER) ↦ Num
+  //
+  // Keeps a number within the given boundaries, but if the given
+  // number exceeds it, it wraps around.
+  //
+  wrap(num, min = 0, max = Number.MAX_SAFE_INTEGER) {
+    if (typeof num !== 'number') {
+      throw new Error('Invalid argument: num must be a number');
     }
+    if (typeof min !== 'number') {
+      throw new Error('Invalid argument: min must be a number');
+    }
+    if (typeof max !== 'number') {
+      throw new Error('Invalid argument: max must be a number');
+    }
+    return num - Math.floor((num - min) / (max - min)) * (max - min);
+  },
 
-
-    //// Exports ///////////////////////////////////////////////////////////////
-    num = typeof exports == 'undefined'?  root.black.num = { }
-        :                                 exports
+  ///// Function snap ////////////////////////////////////////////////////////
+  //
+  //   (num:Num, step:Num = 1) ↦ Num
+  //
+  // Snaps the number to the nearest number in the arithmetic
+  // progression with the given step size.
+  //
+  snap(num, step = 1) {
+    if (typeof num !== 'number') {
+      throw new Error('Invalid argument: num must be a number');
+    }
+    if (typeof step !== 'number') {
+      throw new Error('Invalid argument: step must be a number');
+    }
+    return Math.round(num / step) * step;
+  },
 
-    num.clamp        = clamp
-    num.wrap         = wrap
-    num.snap         = snap
-    num.pad          = pad
-
-    num.$black_box   = Number
-    num.$black_proto = Number.prototype
-    num.$black_utils = { clamp: clamp
-                       , wrap:  wrap
-                       , snap:  snap
-                       , pad:   pad }
-}(this)
+  ///// Function pad /////////////////////////////////////////////////////////
+  //
+  //   (num:Num, size:Num = 1) ↦ Str
+  //
+  // Prefixes
