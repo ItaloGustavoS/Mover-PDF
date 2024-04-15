@@ -1,7 +1,12 @@
 /* Base Styles */
 
 /* Reset default styles for headers */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: bold;
   margin: 0;
 }
@@ -12,7 +17,8 @@ html {
 }
 
 /* Accessible focus treatment */
-a:focus, a:active {
+:focus,
+:active {
   outline: none;
 }
 
@@ -27,17 +33,20 @@ small {
 }
 
 /* Bold text and table headers use bold font weight */
-strong, th {
+strong,
+th {
   font-weight: bold;
 }
 
 /* Vertical alignment for table cells and table cell images */
-td, td img {
+td,
+td img {
   vertical-align: top;
 }
 
 /* Position sub and sup elements without affecting line height */
-sub, sup {
+sub,
+sup {
   font-size: 75%;
   line-height: 0;
   position: relative;
@@ -110,13 +119,13 @@ button {
 /* Non-semantic helper classes */
 
 /* Hide elements for both screenreaders and browsers */
-.hidden {
+.hide {
   display: none;
   visibility: hidden;
 }
 
 /* Hide elements visually, but keep them available for screenreaders */
-.visuallyHidden {
+.visually-hidden {
   position: absolute;
   clip: rect(0 0 0 0);
   width: 1px;
@@ -129,17 +138,18 @@ button {
 
 /* Hide elements visually and from screenreaders, but maintain layout */
 .invisible {
+  pointer-events: none;
   visibility: hidden;
 }
 
 /* Clearfix solution to prevent margin collapsing */
-.clearfix:before,
-.clearfix:after {
+.clearfix::before,
+.clearfix::after {
   content: "";
   display: table;
 }
 
-.clearfix:after {
+.clearfix::after {
   clear: both;
 }
 
