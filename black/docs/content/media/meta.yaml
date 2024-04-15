@@ -1,1 +1,4 @@
-extends: False
+# This is a YAML configuration file for a Hugo theme
+name: My Hugo Theme
+type: hugo-theme
+baseURL: ""
