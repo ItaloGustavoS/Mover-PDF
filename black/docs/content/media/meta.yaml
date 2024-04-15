@@ -1,4 +1,7 @@
 # This is a YAML configuration file for a Hugo theme
 name: My Hugo Theme
 type: hugo-theme
-baseURL: ""
+baseURL: / # Added a forward slash to specify the root URL
+
+# Add any other configuration options you need here
+
