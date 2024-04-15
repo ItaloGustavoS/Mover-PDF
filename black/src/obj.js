@@ -9,122 +9,136 @@
 /**
  * Checks if the given key exists in the object.
  *
- * @param {Object} obj - The object to check.
- * @param {string} key - The key to look for.
- * @return {boolean} True if the key exists in the object, false otherwise.
+ * @param obj - The object to check.
+ * @param key - The key to look for.
+ * @return True if the key exists in the object, false otherwise.
  */
-function hasProperty(obj, key) {
-    return obj.hasOwnProperty(key);
+function hasProperty(obj: object, key: string): boolean {
+  return obj.hasOwnProperty(key);
 }
 
 /**
  * Checks if an object has any own properties.
  *
- * @param {Object} obj - The object to check.
- * @return {boolean} True if the object has any own properties, false otherwise.
+ * @param obj - The object to check.
+ * @return True if the object has any own properties, false otherwise.
  */
-function isEmpty(obj) {
-    for (var key in obj) {
-        if (hasProperty(obj, key)) {
-            return false;
-        }
+function isEmpty(obj: object): boolean {
+  for (const key in obj) {
+    if (hasProperty(obj, key)) {
+      return false;
     }
+  }
 
-    return true;
+  return true;
 }
 
 /**
  * Returns the number of own enumerable properties in the object.
  *
- * @param {Object} obj - The object to count the properties of.
- * @return {number} The number of own enumerable properties in the object.
+ * @param obj - The object to count the properties of.
+ * @return The number of own enumerable properties in the object.
  */
-function propertyCount(obj) {
-    return Object.keys(obj).length;
+function propertyCount(obj: object): number {
+  return Object.keys(obj).length;
 }
 
 /**
  * Returns a list of all own enumerable properties in an object.
  *
- * @param {Object} obj - The object to get the properties from.
- * @return {Array} A list of all own enumerable properties in the object.
+ * @param obj - The object to get the properties from.
+ * @return A list of all own enumerable properties in the object.
  */
-function keys(obj) {
-    return Object.keys(obj);
+function keys(obj: object): string[] {
+  return Object.keys(obj);
 }
 
 /**
  * Returns a list of all own properties in an Object, enumerable
  * or not.
  *
- * @param {Object} obj - The object to get the properties from.
- * @return {Array} A list of all own properties in the object, enumerable
- *                 or not.
+ * @param obj - The object to get the properties from.
+ * @return A list of all own properties in the object, enumerable
+ *         or not.
  */
-function own_props(obj) {
-    return Object.getOwnPropertyNames(obj);
+function ownProperties(obj: object): string[] {
+  return Object.getOwnPropertyNames(obj);
 }
 
 /**
  * Returns a list of the values for all own enumerable
  * properties of an object.
  *
- * @param {Object} obj - The object to get the property values from.
- * @return {Array} A list of the values for all own enumerable
- *                 properties of the object.
+ * @param obj - The object to get the property values from.
+ * @return A list of the values for all own enumerable
+ *         properties of the object.
  */
-function getPropertyValues(obj) {
-    return keys(obj).map(function (key) {
-        return obj[key];
-    });
+function getPropertyValues(obj: object): any[] {
+  return keys(obj).map(key => obj[key]);
 }
 
 /**
- * Returns a list of tupes (key, value) for all own enumerable
+ * Returns a list of tuples (key, value) for all own enumerable
  * properties of an object.
  *
- * @param {Object} obj - The object to get the property items from.
- * @return {Array} A list of tuples (key, value) for all own enumerable
- *                 properties of the object.
+ * @param obj - The object to get the property items from.
+ * @return A list of tuples (key, value) for all own enumerable
+ *         properties of the object.
  */
-function propertyItems(obj) {
-    return keys(obj).map(function (key) {
-        return [key, obj[key]];
-    });
+function propertyItems(obj: object): [string, any][] {
+  return keys(obj).map(key => [key, obj[key]]);
 }
 
 /**
  * Returns the given property in the object, or default if the
  * property can't be found.
  *
- * @param {Object} obj - The object to get the property from.
- * @param {string} key - The key of the property to get.
- * @param {*} default_value - The default value to return if the property
- *                            can't be found.
- * @param {function} [pred] - An optional predicate function to test the
- *                            property value before returning it.
- * @return {*} The property value if it exists and passes the predicate test,
- *             or the default value otherwise.
+ * @param obj - The object to get the property from.
+ * @param key - The key of the property to get.
+ * @param defaultValue - The default value to return if the property
+ *                       can't be found.
+ * @param pred - An optional predicate function to test the
+ *              property value before returning it.
+ * @return The property value if it exists and passes the predicate test,
+ *         or the default value otherwise.
  */
-function getProperty(obj, key, default_value, pred) {
-    if (pred) {
-        return pred(obj[key], key, obj) && obj[key] || default_value;
-    } else {
-        return key in obj ? obj[key] : default_value;
-    }
+function getProperty<T>(
+  obj: object,
+  key: string,
+  defaultValue: T,
+  pred?: (value: any, key: string, obj: object) => boolean
+): T {
+  if (pred) {
+    return pred(obj[key], key, obj) ? obj[key] : defaultValue;
+  } else {
+    return key in obj ? obj[key] : defaultValue;
+  }
 }
 
 /**
  * Removes the property from the object, then return it or the
  * default value.
  *
- * @param {Object} obj - The object to remove the property from.
- * @param {string} key - The key of the property to remove.
- * @param {*} default_value - The default value to return if the property
- *                            can't be found.
- * @param {function} [pred] - An optional predicate function to test the
- *                            property value before removing it.
- * @return {*} The removed property value if it exists and passes the predicate test,
- *             or the default value otherwise.
+ * @param obj - The object to remove the property from.
+ * @param key - The key of the property to remove.
+ * @param defaultValue - The default value to return if the property
+ *                       can't be found.
+ * @param pred - An optional predicate function to test the
+ *              property value before removing it.
+ * @return The removed property value if it exists and passes the predicate test,
+ *         or the default value otherwise.
  */
-function removeProperty(obj, key, default_value
+function removeProperty<T>(
+  obj: object,
+  key: string,
+  defaultValue: T,
+  pred?: (value: any, key: string, obj: object) => boolean
+): T {
+  const value = getProperty(obj, key, undefined, pred);
+
+  if (value !== undefined) {
+    delete obj[key];
+  }
+
+  return value || defaultValue;
+}
