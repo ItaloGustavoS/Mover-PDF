@@ -1,15 +1,28 @@
-{% macro render_ember(data) -%}
-<figure>
-{% for image in data.images -%}
+{% macro render_image(image_data) -%}
+  {% with {
+    description: image_data.description,
+    base: image_data.base,
+    name: image_data.name,
+    extension: image_data.extension
+  } %}
+    <a
+      title="{{ description }}"
+      target="_hyde_basic"
+      href="{{ base ~ name ~ '/sizes/o' ~ extension }}"
+    >
+      <img
+        src="{{ base ~ name ~ '/sizes/s' ~ extension }}"
+        alt="{{ description }}"
+      >
+    </a>
+  {% endwith %}
+{%- endmacro %}
 
-<a
-    title="{{ image.description }}"
-    target="_hyde_basic"
-    href="{{ data.base~image.name~'/sizes/o' }}">
-    <img src="{{ data.base~image.name }}/sizes/s.png"
-         alt="{{ image.description }}">
-</a>
-{%- endfor %}
-<figcaption>Hyde Basic Template - Screenshots</figcaption>
-</figure>
+{% macro render_ember(data) -%}
+  <figure>
+    {% for image in data.images %}
+      {{ render_image(image) }}
+    {% endfor %}
+    <figcaption>Hyde Basic Template - Screenshots</figcaption>
+  </figure>
 {%- endmacro %}
