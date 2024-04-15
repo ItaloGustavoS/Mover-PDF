@@ -3,7 +3,7 @@ description: Extensions to the base objects from the core JavaScript library.
 url: https://github.com/killdream/Black
 author:
   name: Killdream
-  email: <killdream@example.com>
+  email: killdream@example.com
   url: https://killdream.github.io/
 license: MIT
 version: 0.3.0
@@ -20,3 +20,4 @@ keywords:
   - extensions
   - objects
   - core
+
