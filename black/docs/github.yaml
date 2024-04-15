@@ -1,46 +1,47 @@
 # This is a YAML configuration file for a Jekyll site.
+---
 name: Black Documentation
 description: Black is the uncompromising Python code formatter.
 
-# The URL of the site, including the protocol (http or https) and any subdirectories.
-url: https://black.readthedocs.io/
+# Base URL of the site, including the protocol (http or https) and any subdirectories.
+url: "https://black.readthedocs.io/deploy/"
 
 # The base URL of the site, which is the subdirectory where the site is located.
-baseurl: /deploy/
+baseurl: "/"
 
 # The URL where the site's media files (e.g. images) are stored.
-media_url: /deploy/media/
+media_url: "/media/"
 
 # The directory where the site's source files are located.
 source: .
 
 # The directory where the site's compiled files will be generated.
-destination: _site
+destination: "_site"
 
 # The theme of the site.
-theme: minima
+theme: "minima"
 
 # The plugins that will be used to build the site.
 plugins:
-  - jekyll-feed
+  - "jekyll-feed"
 
 # The configuration for the Jekyll Feed plugin.
 feed:
   title: "Black Documentation"
   description: "The uncompromising Python code formatter."
-  permalink: /atom.xml
+  permalink: "/atom.xml"
 
 # The configuration for the site's navigation menu.
 nav:
   - text: "Home"
-    url: /
+    url: "/"
   - text: "Installation"
-    url: /installation/
+    url: "/installation/"
   - text: "Usage"
-    url: /usage/
+    url: "/usage/"
   - text: "Contributing"
-    url: /contributing/
+    url: "/contributing/"
   - text: "FAQ"
-    url: /faq/
+    url: "/faq/"
   - text: "Changelog"
-    url: /changelog/
+    url: "/changelog/"
