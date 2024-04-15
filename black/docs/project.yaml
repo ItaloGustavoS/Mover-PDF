@@ -1,9 +1,22 @@
 name: Black
-snip: Extensions to the base objects from the core JS library.
-page: https://github.com/killdream/Black
-ack: >
-    —Design mostly based on <a href="http://hyde.github.com/">Hyde docs</a>
-version:    0.3
-release:    https://github.com/killdream/Black/zipball/master
-repository: https://github.com/killdream/Black
-tracker:    https://github.com/killdream/Black/issues
+description: Extensions to the base objects from the core JavaScript library.
+url: https://github.com/killdream/Black
+author:
+  name: Killdream
+  email: <killdream@example.com>
+  url: https://killdream.github.io/
+license: MIT
+version: 0.3.0
+homepage: https://github.com/killdream/Black#readme
+bugs: https://github.com/killdream/Black/issues
+repository:
+  type: git
+  url: https://github.com/killdream/Black.git
+  commit: master
+download: https://github.com/killdream/Black/archive/master.zip
+main: index.js
+keywords:
+  - JavaScript
+  - extensions
+  - objects
+  - core
