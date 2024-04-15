@@ -8,7 +8,7 @@
 @import 'inc/text';
 @import 'inc/controls';
 
-figcaption{
+figcaption {
     text-align: center;
     font-size: 12px;
 }
@@ -20,178 +20,82 @@ h2 {
     line-height: @gutter * 2;
 }
 
-figure > br{
-    height:0;
-    display:block;
-    margin:0;
-    padding:0;
-    line-height:0;
-}
-
 header.banner {
     width: 100%;
     height: @column * 3;
     position: relative;
-    img{
-        display:block;
-        float: left;
-        opacity: 0.5;
-    }
-    h1 {
-        .heading;
-        float: left;
-        margin-left: @column - 2;
-        font-size: @column * 2;
-        line-height: @column * 3 + 8;
-        margin-bottom: 0;
-        font-variant: small-caps;
-    }
-    h3 {
-        .subheading;
-        color: @shade;
-        position: absolute;
-        bottom: @gutter - 2;
-        font-size: @gutter * 2;
-        left: @gutter * 15 + 2;
-        margin:0;
-        text-shadow: 0px 1px 2px #fff;
-    }
-    h3::before {
-        content: '————';
-        letter-spacing: -5px;
-        margin-right: 2px
-    }
-    margin-bottom: @column - 2;
 }
 
-.doc{
+header.banner img {
+    display: block;
+    float: left;
+    opacity: 0.5;
+}
+
+header.banner h1 {
+    .heading;
+    float: left;
+    margin-left: @column - 2;
+    font-size: @column * 2;
+    line-height: @column * 3 + 8;
+    margin-bottom: 0;
+    font-variant: small-caps;
+}
+
+header.banner h3 {
+    .subheading;
+    color: @shade;
+    position: absolute;
+    bottom: @gutter - 2;
+    font-size: @gutter * 2;
+    left: @gutter * 15 + 2;
+    margin: 0;
+    text-shadow: 0px 1px 2px #fff;
+}
+
+header.banner h3::before {
+    content: '————';
+    letter-spacing: -5px;
+    margin-right: 2px;
+}
+
+header.banner margin-bottom: @column - 2;
+
+.code {
     position: relative;
 }
 
-aside{
-
-    mark.version{
-        color: @darkest;
-        font-style: normal;
-        font-weight: normal;
-        background-color: @clear;
-        padding: 2px 6px;
-        text-shadow: 0px 1px 0px #fff;
-        .radius(6px);
-        margin-bottom: 12px;
-        display: block;
-    }
-
-    ul{
-        padding:0;
-    }
-
-    ul.toc{
-        .boxshadow(0px, 0px, 15px, @qdark);
-        .linearGradient(#EEE, #FFF);
-        border: 1px solid #fff;
-        padding: @gutter;
-
-        li{
-            list-style-type: none;
-            a {
-                border-left: 5px solid #ccc;
-                border-bottom: 1px solid #ddd;
-                display: block;
-            }
-            a.active {
-                border-color: #555;
-            }
-            a:hover {
-                border-color: @dark;
-                background: ;
-            }
-        }
-    }
-
-    line-height: @gutter * 2;
+.code figcaption {
+    font-size: @gutter - 2;
     position: absolute;
-    left: 740px;
-    width: 200px;
-    font-size: @gutter;
-
-    a:before{
-        content: '\00a0\00a0';
-    }
-
-    h2{
-        margin: 4px 0;
-        font-size: 16px;
-    }
-
-    h2.active{
-        background-color: #ededed;
-    }
-
-    li {
-        margin:0;
-        list-style-type: none;
-    }
-
-    nav.prevnext{
-
-        margin: @gutter 0;
-        .prev{
-            display: block;
-            float: left;
-        }
-
-        .next{
-            display: block;
-            float: right;
-            padding-right: @gutter * 0.75;
-        }
-    }
-
+    bottom: @gutter * 0.25;
+    right: @gutter;
+    color: @ccode;
 }
 
-article {
-    background-color: #f7f7f7;
-    text-shadow: 0px 2px 0px #fff;
-    float: left;
-    padding: @column;
-    .boxshadow(0, 1px, 10px, @qdark);
+.code background-color: #F0F3F3;
+.code border-left: 500px solid @dark;
+.code border-top: 5px solid @dark;
+.code border-bottom: 1px dashed @dark * 1.2;
+.code margin-right: -48px;
+.code margin-left: -548px;
 
-    h1.title {
-        color: @dark;
-        font-size: @gutter * 3;
-        margin-bottom: @gutter / 2 + 1;
-    }
-    h3.subtitle{
-        color: @shade;
-        font-family: Philosopher;
-        font-size: @gutter * 1.5;
-        font-weight: normal;
-        padding-left: 6px;
-        padding-top: @gutter / 2;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-        margin-bottom: @gutter * 2 - 2;
-    }
-
-    h3 {
-        font-size: @gutter * 1.8;
-    }
-    h4 {
-        font-size: @gutter * 1.6;
-    }
-    h5 {
-        font-size: @gutter * 1.5;
-    }
-    h6 {
-        font-size: @gutter * 1.4;
-    }
-
-    h3, h4, h5, h6 {
-        padding: 5px 0;
-    }
+.doc {
+    position: relative;
 }
 
-footer{
+.highlight {
+    pre {
+        font-size: @gutter;
+        padding: @gutter + 4 @gutter @gutter;
+        line-height: 1.2em;
+        margin-bottom: @gutter / 2 + 2;
+    }
+
+    padding-left: 40px;
+}
+
+footer {
     position: fixed;
     color: @dgrey;
     bottom: 0;
@@ -199,51 +103,33 @@ footer{
     font-size: @gutter;
     line-height: @gutter + 2;
     text-align: right;
-
-    li {
-        list-style-type: none;
-    }
 }
 
-.code{
-    position: relative;
-
-    figcaption{
-        font-size: @gutter - 2;
-        position:absolute;
-        bottom: @gutter * 0.25;
-        right: @gutter;
-        color: @ccode;
-    }
-    background-color: #F0F3F3;
-    border-left: 500px solid @dark;
-    border-top: 5px solid @dark;
-    border-bottom: 1px dashed @dark * 1.2;
-    margin-right: -48px;
-    margin-left: -548px;
+footer li {
+    list-style-type: none;
 }
 
-.highlight
-{
-     pre{
-        font-size: @gutter;
-        padding: @gutter + 4 @gutter @gutter;
-        line-height: 1.2em;
-        margin-bottom: @gutter / 2 + 2;
-    }
-    padding-left: 40px;
-}
-
-
-pre code {
-    margin-top: -1 * @gutter;
-    margin-bottom: @gutter * 2;
-    background: #eee;
-    padding: 8px;
-    border: 1px solid #ddd;
-    border-left: 5px solid #ccc;
+figure > br {
+    height: 0;
     display: block;
-    font-size: 75%;
+    margin: 0;
+    padding: 0;
+    line-height: 0;
+}
+
+h3 {
+    font-size: @gutter * 1.8;
+}
+
+h3.subtitle {
+    color: @shade;
+    font-family: Philosopher;
+    font-size: @gutter * 1.5;
+    font-weight: normal;
+    padding-left: 6px;
+    padding-top: @gutter / 2;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    margin-bottom: @gutter * 2 - 2;
 }
 
 article > h3 {
@@ -252,3 +138,60 @@ article > h3 {
     margin-top: @gutter;
     color: @shade;
 }
+
+aside {
+    line-height: @gutter * 2;
+    position: absolute;
+    left: 740px;
+    width: 200px;
+    font-size: @gutter;
+}
+
+aside a:before {
+    content: '\00a0\00a0';
+}
+
+aside h2 {
+    margin: 4px 0;
+    font-size: 16px;
+}
+
+aside h2.active {
+    background-color: #ededed;
+}
+
+aside ul {
+    padding: 0;
+}
+
+aside ul.toc {
+    .boxshadow(0px, 0px, 15px, @qdark);
+    .linearGradient(#EEE, #FFF);
+    border: 1px solid #fff;
+    padding: @gutter;
+}
+
+aside ul.toc li {
+    list-style-type: none;
+}
+
+aside ul.toc a {
+    border-left: 5px solid #ccc;
+    border-bottom: 1px solid #ddd;
+    display: block;
+}
+
+aside ul.toc a.active {
+    border-color: #555;
+}
+
+aside ul.toc a:hover {
+    border-color: @dark;
+    background: ;
+}
+
+aside mark.version {
+    color: @darkest;
+    font-style: normal;
+    font-weight: normal;
+   
