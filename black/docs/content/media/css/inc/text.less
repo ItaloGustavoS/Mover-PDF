@@ -1,66 +1,44 @@
-@heading-font: "Expletus Sans", Helvetica, Arial, sans-serif;
-@subheading-font: "Buda", Helvetica, Arial, sans-serif;
-@text-font: Helvetica, Arial, sans-serif;
-@caps-font: Helvetica, Arial, sans-serif;
-@blurb-font: Helvetica, Arial, sans-serif;
-
-
-.blurb{
-    background-color: @light;
+:root {
+  --main-bg-color: #f5f5f5;
+  --main-text-color: #333;
+  --main-shadow-color: #fff;
+  --code-color: #008080;
+  --dark1: #333;
+  --clear: #fff;
 }
 
-.heading{
-    color: @dark;
-    text-shadow: 0px 2px 2px #fff;
+/* Fonts */
+@font-face {
+  font-family: "Expletus Sans";
+  src: local("Expletus Sans"),
+       url("ExpletusSans.woff2") format("woff2"),
+       url("ExpletusSans.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
 }
 
-body{
-    font-size: @gutter + 4;
-    line-height: @gutter * 1.75;
-    font-weight: normal;
+@font-face {
+  font-family: "Buda";
+  src: local("Buda"),
+       url("Buda.woff2") format("woff2"),
+       url("Buda.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
 }
 
-h1 {
-    font-family: @heading-font;
+body {
+  font-family: "Helvetica", "Arial", sans-serif;
+  font-size: calc(var(--gutter) + 4px);
+  line-height: calc(var(--gutter) * 1.75);
+  font-weight: normal;
+  background-color: var(--main-bg-color);
+  color: var(--main-text-color);
 }
 
-h2, h3, h4, h5, h6 {
-    font-family: "Expletus Sans";
+.blurb {
+  background-color: var(--main-bg-color);
 }
 
-code,
-.highlight pre{
-    font-family: "Courier New", courier, monospace;
-    font-size: 90%;
-    line-height: 100%;
-}
-
-code{
-    color: @ccode;
-}
-
-ul > li {
-    list-style-type: square;
-}
-
-li ul > li {
-    list-style-type: circle;
-}
-
-.amp {
-    font-family: Baskerville, Palatino, "Book Antiqua", serif;
-    line-height: 75%;
-}
-
-.caps, .sc {
-    font-family: @caps-font;
-}
-
-/* These selection declarations have to be separate.
-   No text-shadow: twitter.com/miketaylr/status/12228805301
-   Also: hot pink. */
-::-moz-selection{ background: @dark1; color: @clear; text-shadow: none; }
-::selection { background: @dark1; color: @clear; text-shadow: none; }
-
-/*  j.mp/webkit-tap-highlight-color */
-a:link { -webkit-tap-highlight-color: @dark1; }
+.heading {
+  color: var(--main-text-color);
+  text-shadow: 0px 2px 2px var(--main-
