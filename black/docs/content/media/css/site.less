@@ -1,197 +1,177 @@
-@import 'inc/reset.css';
+@import 'inc/reset';
 @import 'inc/measures';
 @import 'inc/colors';
 @import 'inc/mixins';
-@import 'inc/base.css';
+@import 'inc/base';
 @import 'inc/common';
 @import 'inc/layout';
 @import 'inc/text';
 @import 'inc/controls';
 
 figcaption {
-    text-align: center;
-    font-size: 12px;
+  text-align: center;
+  font-size: $gutter * 1.25;
 }
 
 h2 {
-    margin: @column 0 @column / 2;
-    font-size: @gutter * 2;
-    color: @shade;
-    line-height: @gutter * 2;
+  margin: $column 0 $column / 2;
+  font-size: $gutter * 4;
+  color: $shade;
+  line-height: $gutter * 4;
 }
 
 header.banner {
-    width: 100%;
-    height: @column * 3;
-    position: relative;
+  width: 100%;
+  height: $column * 6;
+  position: relative;
 }
 
 header.banner img {
-    display: block;
-    float: left;
-    opacity: 0.5;
+  display: block;
+  float: left;
+  width: $column * 3;
+  height: $column * 6;
+  object-fit: cover;
+  opacity: 0.5;
 }
 
 header.banner h1 {
-    .heading;
-    float: left;
-    margin-left: @column - 2;
-    font-size: @column * 2;
-    line-height: @column * 3 + 8;
-    margin-bottom: 0;
-    font-variant: small-caps;
+  .heading;
+  float: left;
+  margin-left: $column - 2;
+  font-size: $column * 4;
+  line-height: $column * 6 + 8;
+  margin-bottom: 0;
+  font-variant: small-caps;
 }
 
 header.banner h3 {
-    .subheading;
-    color: @shade;
-    position: absolute;
-    bottom: @gutter - 2;
-    font-size: @gutter * 2;
-    left: @gutter * 15 + 2;
-    margin: 0;
-    text-shadow: 0px 1px 2px #fff;
+  .subheading;
+  color: $shade;
+  position: absolute;
+  bottom: $gutter - 2;
+  font-size: $gutter * 2;
+  left: $gutter * 15 + 2;
+  margin: 0;
+  text-shadow: 0px 1px 2px #fff;
 }
 
 header.banner h3::before {
-    content: '————';
-    letter-spacing: -5px;
-    margin-right: 2px;
+  content: '————';
+  letter-spacing: -5px;
+  margin-right: 2px;
 }
 
-header.banner margin-bottom: @column - 2;
+header.banner {
+  margin-bottom: $column - 2;
+}
 
 .code {
-    position: relative;
+  position: relative;
+  background-color: #F0F3F3;
+  border-left: 500px solid $dark;
+  border-top: 5px solid $dark;
+  border-bottom: 1px dashed $dark * 1.2;
+  margin-right: -48px;
+  margin-left: -548px;
+  padding: $gutter * 2;
 }
 
 .code figcaption {
-    font-size: @gutter - 2;
-    position: absolute;
-    bottom: @gutter * 0.25;
-    right: @gutter;
-    color: @ccode;
-}
-
-.code background-color: #F0F3F3;
-.code border-left: 500px solid @dark;
-.code border-top: 5px solid @dark;
-.code border-bottom: 1px dashed @dark * 1.2;
-.code margin-right: -48px;
-.code margin-left: -548px;
-
-.doc {
-    position: relative;
+  font-size: $gutter - 2;
+  position: absolute;
+  bottom: $gutter * 0.25;
+  right: $gutter;
+  color: $ccode;
 }
 
 .highlight {
-    pre {
-        font-size: @gutter;
-        padding: @gutter + 4 @gutter @gutter;
-        line-height: 1.2em;
-        margin-bottom: @gutter / 2 + 2;
-    }
+  pre {
+    font-size: $gutter;
+    padding: $gutter + 4 $gutter $gutter;
+    line-height: 1.2em;
+    margin-bottom: $gutter / 2 + 2;
+  }
 
-    padding-left: 40px;
+  padding-left: 40px;
 }
 
 footer {
-    position: fixed;
-    color: @dgrey;
-    bottom: 0;
-    right: @gutter * 2;
-    font-size: @gutter;
-    line-height: @gutter + 2;
-    text-align: right;
+  position: fixed;
+  color: $dgrey;
+  bottom: 0;
+  right: $gutter * 2;
+  font-size: $gutter;
+  line-height: $gutter + 2;
+  text-align: right;
 }
 
 footer li {
-    list-style-type: none;
+  list-style-type: none;
 }
 
 figure > br {
-    height: 0;
-    display: block;
-    margin: 0;
-    padding: 0;
-    line-height: 0;
+  height: 0;
+  display: block;
+  margin: 0;
+  padding: 0;
+  line-height: 0;
 }
 
 h3 {
-    font-size: @gutter * 1.8;
+  font-size: $gutter * 1.8;
 }
 
 h3.subtitle {
-    color: @shade;
-    font-family: Philosopher;
-    font-size: @gutter * 1.5;
-    font-weight: normal;
-    padding-left: 6px;
-    padding-top: @gutter / 2;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    margin-bottom: @gutter * 2 - 2;
+  color: $shade;
+  font-family: Philosopher;
+  font-size: $gutter * 1.5;
+  font-weight: normal;
+  padding-left: 6px;
+  padding-top: $gutter / 2;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  margin-bottom: $gutter * 2 - 2;
 }
 
 article > h3 {
-    border-top: 3px solid #dfdfdf;
-    padding-top: @gutter;
-    margin-top: @gutter;
-    color: @shade;
+  border-top: 3px solid #dfdfdf;
+  padding-top: $gutter;
+  margin-top: $gutter;
+  color: $shade;
 }
 
 aside {
-    line-height: @gutter * 2;
-    position: absolute;
-    left: 740px;
-    width: 200px;
-    font-size: @gutter;
+  line-height: $gutter * 2;
+  position: absolute;
+  left: 740px;
+  width: 200px;
+  font-size: $gutter;
 }
 
 aside a:before {
-    content: '\00a0\00a0';
+  content: '\00a0\00a0';
 }
 
 aside h2 {
-    margin: 4px 0;
-    font-size: 16px;
+  margin: 4px 0;
+  font-size: 16px;
 }
 
 aside h2.active {
-    background-color: #ededed;
+  background-color: #ededed;
 }
 
 aside ul {
-    padding: 0;
+  padding: 0;
 }
 
 aside ul.toc {
-    .boxshadow(0px, 0px, 15px, @qdark);
-    .linearGradient(#EEE, #FFF);
-    border: 1px solid #fff;
-    padding: @gutter;
+  box-shadow: 0px 0px 15px $qdark;
+  background: linear-gradient(#EEE, #FFF);
+  border: 1px solid #fff;
+  padding: $gutter;
 }
 
 aside ul.toc li {
-    list-style-type: none;
+  list-style-type: none;
 }
-
-aside ul.toc a {
-    border-left: 5px solid #ccc;
-    border-bottom: 1px solid #ddd;
-    display: block;
-}
-
-aside ul.toc a.active {
-    border-color: #555;
-}
-
-aside ul.toc a:hover {
-    border-color: @dark;
-    background: ;
-}
-
-aside mark.version {
-    color: @darkest;
-    font-style: normal;
-    font-weight: normal;
-   
