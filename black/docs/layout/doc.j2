@@ -1,26 +1,30 @@
 {% extends "root.j2" %}
+
 {% block main -%}
 <div class="doc">
     <article>
-    <hgroup>
-        <h1 class="title">{{ resource.meta.title }}</h1>
-        <h3 class="subtitle">{{ resource.meta.subtitle }}</h3>
-    </hgroup>
-    {% filter markdown|typogrify %}
-    {% block doc -%}
-    {%- endblock %}
-    {%- endfilter %}
+        <hgroup>
+            <h1 class="title">{{ resource.meta.title }}</h1>
+            <h3 class="subtitle">{{ resource.meta.subtitle }}</h3>
+        </hgroup>
+        {# Apply markdown and typogrify filters to the doc block content #}
+        {% filter markdown|typogrify %}
+        {% block doc %}
+        {% endblock %}
+        {% endfilter %}
     </article>
     <aside>
         <ul class="toc">
-        <li><mark class="version">Version: {{ project.version }}</mark></li>
-        {% for topic, res_walker in site.content.walk_toc_groups() %}
+            <li>
+                <mark class="version">Version: {{ project.version|default('') }}</mark>
+            </li>
+            {% for topic, res_walker in site.content.walk_toc_groups() %}
             {% with resources=res_walker|list %}
             {% if resources %}
                 {% set cls = ' active' if topic in resource.walk_toc_groups() else '' %}
                 <li class="topic{% ifchanged cls %} {{ cls }}{% endifchanged %}" id="topic{{ loop.index0 }}">
                     {% if not topic.hide_name %}
-                    <h2 class="{{cls}}">{{ topic.name|title|typogrify }}</h2>
+                    <h2 class="{{cls}}">{{ topic.name|title|default('')|typogrify }}</h2>
                     {%- endif %}
                     <ul class="links">
                     {% for doc in resources %}
@@ -28,7 +32,8 @@
                         <a {% if resource.url == doc.url %}class="active"{% endif %}
                             title="{{ doc.meta.description|default('') }}"
                             href="{{ content_url(doc.url) }}">
-                            {{ doc.meta.title|typogrify }}</a>
+                            {{ doc.meta.title|typogrify|default('') }}
+                        </a>
                         </li>
                     {% endfor %}
                     </ul>
@@ -36,31 +41,36 @@
             {% else %}
                 <li class="topic">
                     {% if not topic.hide_name %}
-                    <h2>{{ topic.name|title|typogrify }}</h2>
+                    <h2>{{ topic.name|title|default('')|typogrify }}</h2>
                     {%- endif %}
                     <p>No resources found.</p>
                 </li>
             {% endif %}
             {% endwith %}
-        {% endfor %}
+            {% endfor %}
         </ul>
         <nav class="prevnext">
+            {# Display the previous resource link #}
             {% if resource.prev_in_toc %}
             <a
                 class="prev"
-                title="{{ resource.prev_in_toc.meta.title }}"
+                title="{{ resource.prev_in_toc.meta.title|default('') }}"
                 href="{{ content_url(resource.prev_in_toc.url) }}">
                 &larr;Previous
             </a>
             {% endif %}
+
+            {# Display the next resource link #}
             {% if resource.next_in_toc %}
             <a
                 class="next"
-                title="{{ resource.next_in_toc.meta.title }}"
+                title="{{ resource.next_in_toc.meta.title|default('') }}"
                 href="{{ content_url(resource.next_in_toc.url) }}">
                 Next&rarr;
             </a>
             {% endif %}
             <br class="clear">
         </nav>
-
+    </aside>
+</div>
+{%- endblock %}
