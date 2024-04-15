@@ -1,15 +1,15 @@
 import shutil
 import os
-import re
-from os import path
 
-source = r"C:\Users\Italo\Downloads\Python"
-destination = r"C:\Users\Italo\Downloads\a"
+source_dir = r"C:\Users\Italo\Downloads\Python"
+destination_dir = r"C:\Users\Italo\Downloads\a"
 
-# - Teste de implementação Regex
-# path = os.walk(r"C:\Users\Italo\Downloads\Python")
-# x = re.search("^EXAMES",path)
+if not os.path.exists(destination_dir):
+    os.makedirs(destination_dir)
 
-for file in files:
-    new_path = shutil.move(f"{source}/{file}", destination)
-print(new_path)
+for file in os.listdir(source_dir):
+    source_file = os.path.join(source_dir, file)
+    if os.path.isfile(source_file):
+        destination_file = os.path.join(destination_dir, file)
+        shutil.copy2(source_file, destination_file)
+        print(f"{file} copied to {destination_dir}")
