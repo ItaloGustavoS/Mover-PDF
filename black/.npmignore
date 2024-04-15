@@ -1,3 +1,9 @@
-docs/deploy
-.hg
-.hgignore
+# File organization
+directory_structure = {
+    "docs": {
+        "deploy": {}
+    },
+    ".hg": {
+        ".hgignore": {}
+    }
+}
