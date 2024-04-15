@@ -1,8 +1,21 @@
+# This is a YAML configuration file for Hyde, a static website generator.
+
+# Set the mode to development for local testing
 mode: development
+
+# Define the media root directory
 media_root: media
+
+# Define the media URL
 media_url: /media/
+
+# Define the base URL
 base_url: /
+
+# Set the template engine to Jinja2
 template: hyde.ext.templates.jinja.Jinja2Template
+
+# Include the following plugins
 plugins:
   - hyde.ext.plugins.meta.MetaPlugin
   - hyde.ext.plugins.auto_extend.AutoExtendPlugin
