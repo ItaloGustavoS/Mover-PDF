@@ -1,2 +1,4 @@
-# Auto detect text files and perform LF normalization
-* text=auto
+# Auto-detect text files and perform LF normalization
+* ^(?i)(?!(\.|/)(bin|obj|out|exe|class|lib|ilk|pdb|exp|libx|gdb|idb|aps|sbr|ipdb|lo\
+g|tlb|ncb|suo|res|objd|pch))(?i).*\.(aspx?|html?|htm|css|js|java|class|jsp|jspx?|shtml?|sql|pl|bat|cmd|vbproj|vcxproj|vcproj|vsxproj|sh|xml|x?aml|x?schema|x?jb|x?proj|x?sln|x?user|x?config|cs|resx?|resources|java|scss|less|ts|jsx?|json|asmx?|svc|config|webinfo|appconfig|x?designer|x?codebehind|x?designer.cs|x?csproj|x?vbproj|x?sln)$
+  :@"{remove}:&{replace(\r\n, \n, &)}"
